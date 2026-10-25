@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+const API_URL = "https://coffee-shop-management-6flv.onrender.com";
 function AdminMenu() {
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
@@ -13,10 +13,7 @@ function AdminMenu() {
 
   useEffect(() => {
     const fetchMenuItems = async () => {
-      try {
-        const response = await fetch(
-          "http://localhost:5000/api/menu"
-        );
+      try {fetch(`${API_URL}/api/menu`);
 
         const data = await response.json();
 
@@ -35,9 +32,9 @@ function AdminMenu() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/menu/${itemId}`,
-        {
+    const response = await fetch(
+  `${API_URL}/api/menu/${itemId}`,
+  {
           method: "PUT",
           headers: {
             "Content-Type": "application/json",
@@ -78,9 +75,7 @@ function AdminMenu() {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/menu",
-        {
+     const response = await fetch(`${API_URL}/api/menu`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",

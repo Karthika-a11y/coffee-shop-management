@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+const API_URL = "https://coffee-shop-management-6flv.onrender.com";
 
 function Orders() {
   const [orders, setOrders] = useState([]);
@@ -16,9 +17,7 @@ function Orders() {
       }
 
       try {
-        const response = await fetch(
-          "http://localhost:5000/api/orders/my-orders",
-          {
+        const response = await fetch(`${API_URL}/api/orders/my-orders`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },

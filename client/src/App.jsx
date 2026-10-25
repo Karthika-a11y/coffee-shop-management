@@ -6,6 +6,7 @@ import Orders from "./Orders";
 import AdminDashboard from "./AdminDashboard";
 import AdminMenu from "./AdminMenu";
 import Logout from "./Logout";
+const API_URL = "https://coffee-shop-management-6flv.onrender.com";
 
 function App() {
   const [menuItems, setMenuItems] = useState([]);
@@ -16,7 +17,7 @@ function App() {
 const [category, setCategory] = useState("All");
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/menu")
+    fetch(`${API_URL}/api/menu`)
       .then((response) => {
         if (!response.ok) {
           throw new Error("Failed to fetch menu");
@@ -77,7 +78,7 @@ const [category, setCategory] = useState("All");
   }
 
   try {
-    const response = await fetch("http://localhost:5000/api/orders", {
+    const response = await fetch(`${API_URL}/api/orders`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

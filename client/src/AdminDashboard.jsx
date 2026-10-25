@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+const API_URL = "https://coffee-shop-management-6flv.onrender.com";
 
 function AdminDashboard() {
   const [orders, setOrders] = useState([]);
@@ -13,9 +14,7 @@ const [message, setMessage] = useState("");
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        "http://localhost:5000/api/orders/all",
-        {
+      const response = await fetch(`${API_URL}/api/orders/all`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -39,9 +38,7 @@ const fetchStats = async () => {
   const token = localStorage.getItem("token");
 
   try {
-    const response = await fetch(
-      "http://localhost:5000/api/orders/stats",
-      {
+    const response = await fetch(`${API_URL}/api/orders/stats`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -70,10 +67,10 @@ const fetchStats = async () => {
     const token = localStorage.getItem("token");
 
     try {
-      const response = await fetch(
-        `http://localhost:5000/api/orders/${orderId}/status`,
-        {
-          method: "PUT",
+     const response = await fetch(
+  `${API_URL}/api/orders/${orderId}/status`,
+  {
+    method: "PUT",
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
